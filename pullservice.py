@@ -9,14 +9,6 @@ url = 'https://map.santaclaraca.gov/maps/rest/services/LAYERS/BuildingStructureC
 params1 = {'where':'1=1', 'f':'pjson', "returnGeometry":"false","outFields":'*','returnIdsOnly':'true'  }
 params2 = {'f':'pjson', 'where':'','outSR':'4326',"outFields":'*'}
 
-# http://www2.lynxgis.com/arcgis/rest/services/LosGatos/TLGBuildings/MapServer/0/query?
-# where=&text=&objectIds=17966%2C11571&time=&geometry=&
-# geometryType=esriGeometryEnvelope&inSR=&spatialRel=esriSpatialRelIntersects&
-# relationParam=&outFields=*&returnGeometry=true&returnTrueCurves=false&
-# maxAllowableOffset=&geometryPrecision=&outSR=4326&returnIdsOnly=false&
-# returnCountOnly=false&orderByFields=&groupByFieldsForStatistics=&
-# outStatistics=&returnZ=false&returnM=false&gdbVersion=&
-# returnDistinctValues=false&resultOffset=&resultRecordCount=&f=pjson
 
 shape = ShapeGenerate()
 shape.create(4)
@@ -109,4 +101,4 @@ else:
     for geom in process.geometries:
         shape.process_geom(geom) 
 
-shape.save(r'C:\Data\PlanningDataBase\Buldings\SantaClara\CitySantaClaraBuildings')
+shape.save(r'CitySantaClaraBuildings')
