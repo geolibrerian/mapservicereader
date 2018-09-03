@@ -4,7 +4,7 @@ from shapefiles import ShapeGenerate
 from functions.classes import GetData, ProcessData
 
 url ='http://www2.lynxgis.com/arcgis/rest/services/LosGatos/TLGBuildings/MapServer/0/query'
-url = 'https://map.santaclaraca.gov/maps/rest/services/LAYERS/BuildingStructureCache/MapServer/0/query'
+url = 'https://coast.noaa.gov/arcgis/rest/services/dc_slr/Point_Layers/MapServer/0/query'
 
 params1 = {'where':'1=1', 'f':'pjson', "returnGeometry":"false","outFields":'*','returnIdsOnly':'true'  }
 params2 = {'f':'pjson', 'where':'','outSR':'4326',"outFields":'*'}
@@ -73,6 +73,7 @@ if len(oids)> 1000:
         params2['objectIds'] = ",".join(map(str,oids[start:len(oids)]))
         gets = GetData(url, params2)
         gets.get_request_urllib()
+
         process = ProcessData(gets.data, fields)
 
         process.create_geometries() 
@@ -89,6 +90,9 @@ else:
     params2['objectIds'] = ",".join(map(str,oids))
     gets = GetData(url, params2)
     gets.get_request_urllib()
+    gets.create_fields()
+    fields = gets.fields
+
     process = ProcessData(gets.data, fields)
 
     process.create_geometries() 
@@ -101,4 +105,4 @@ else:
     for geom in process.geometries:
         shape.process_geom(geom) 
 
-shape.save(r'CitySantaClaraBuildings')
+shape.save(r'C:/Data/SeaLevel')
