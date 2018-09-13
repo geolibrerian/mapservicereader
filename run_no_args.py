@@ -1,45 +1,20 @@
-
 from shapefileClasses import ShapeGenerate
 from functions.classes import GetData, ProcessData
 from functions.types import esri_geometry,shape_types
-import argparse
 
-parser = argparse.ArgumentParser(description='Requires URL for service with query endpoint and output name')
-parser.add_argument('-url','-u', required=True)
-parser.add_argument('-output','-o', required=True)
-parser.add_argument('-srid','-s')
-parser.add_argument('-fields','-f', nargs="*")
+url = '' # Query URL e.g. 'http://www2.lynxgis.com/arcgis/rest/services/LosGatos/TLGBuildings/MapServer/0/query'
+output = '' # Name of output shapefile
 
-
-args= parser.parse_args()
-
-
-url = args.url
-output = args.output
 
 params1 = {'where':'1=1', 'f':'pjson', "returnGeometry":"false","outFields":'*','returnIdsOnly':'true'  }
-params2 = {'f':'pjson', 'where':''}
-if args.fields != None:
+params2 = {'f':'pjson', 'where':'','outSR':'4326',"outFields":'*'}
 
-    if len(args.fields)>1:
-        params2["outFields"] = ",".join(args.fields)
-    elif len(args.fields)==0:
-        params2["outFields"] = args.fields[0]
-    else:
-        params2["outFields"] = "*"
-else:
-    params2["outFields"] = "*"
-
-if args.srid != None:
-    params2["outSR"] = args.srid
-else:
-    params2["outSR"] = "4326"
 
 shape = ShapeGenerate()
 
 
 
-# Make call to URL to get all object IDs
+
 gets = GetData(url, params1)
 gets.get_request()
 oids = gets.data['objectIds']
@@ -47,7 +22,7 @@ oids = gets.data['objectIds']
 
 
 
-# Start processing of features
+
 print("Number of Features: {0}".format(len(oids)))
 noids = len(oids)
 loids = list(range(0,len(oids),500))
