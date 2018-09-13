@@ -1,10 +1,8 @@
-import requests
-from shapefiles import ShapeGenerate
 
+from shapefileClasses import ShapeGenerate
 from functions.classes import GetData, ProcessData
 
 url ='http://www2.lynxgis.com/arcgis/rest/services/LosGatos/TLGBuildings/MapServer/0/query'
-url = 'https://coast.noaa.gov/arcgis/rest/services/dc_slr/Point_Layers/MapServer/0/query'
 
 params1 = {'where':'1=1', 'f':'pjson', "returnGeometry":"false","outFields":'*','returnIdsOnly':'true'  }
 params2 = {'f':'pjson', 'where':'','outSR':'4326',"outFields":'*'}
@@ -105,4 +103,4 @@ else:
     for geom in process.geometries:
         shape.process_geom(geom) 
 
-shape.save(r'C:/Data/SeaLevel')
+shape.save(r'C:/Data/Buildings')
