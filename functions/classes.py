@@ -25,15 +25,16 @@ class GetData():
 
         r = requests.get(self.url,params = self.params)
 
-        self.data = r.json() 
-        # try:
-        #   self.data = r.json() 
-        # except:
-        #   self.data ={}
+        #self.data = r.json() 
+        try:
+          self.data = r.json() 
+        except:
+          self.data ={}
 
     def get_request_urllib(self):
 
         data = urlencode(self.params)
+
         data = data.encode('ascii') # data should be bytes
         req = Request(self.url, data)
         response = urlopen(req)
@@ -50,6 +51,7 @@ class GetData():
                 name = field['name'][:10]
             else:
                 name = field['name']
+
             if version ==2:
                 field_details = [name.encode('utf-8'),esri_types[field['type']]]
             else:
@@ -82,10 +84,7 @@ class ProcessData():
                         try:
                             date = datetime.datetime.utcfromtimestamp(abs(float(row['attributes'][key]))/1000.)
                         except:
-                            print(float(row['attributes'][key]))
                             date= None
-                        #date = time.strftime('%m/%d/%Y %H:%M:%S',time.gmtime(row['attributes'][key]/1000.))
-                        #print(date1, date)
                         newrow.append(date)
                     else:
                         newrow.append(row['attributes'][key])

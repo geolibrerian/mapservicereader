@@ -5,7 +5,7 @@ esri_types = { 'esriFieldTypeOID':'N',
 	'esriFieldTypeInteger':'N' , 
      "esriFieldTypeSingle":'F',
 	'esriFieldTypeDouble':'F' , 
-	'esriFieldTypeGlobalID ':'C',
+	'esriFieldTypeGlobalID':'C',
 
 }
 
@@ -40,6 +40,18 @@ shape_types = {
 	25 :'PolygonM',
 	28 :'MultiPointM',
 	31 :'MultiPatch',
+
+
+}
+
+
+
+esri_geometry = {
+	"esriGeometryPoint":1,
+	"esriGeometryPolyline":3,
+	"esriGeometryPolygon":5,
+	"esriGeometryMultipoint":8,
+	"esriGeometryEnvelope":5,
 
 
 }
