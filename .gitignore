@@ -2,3 +2,4 @@
 *.dbf
 *.shp
 *.shx
+*.pyc
