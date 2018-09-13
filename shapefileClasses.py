@@ -28,7 +28,7 @@ class ShapeGenerate():
 		if 'rings' in geom.keys():
 			self.make_poly(geom['rings'])
 		elif 'paths' in geom.keys():
-			self.make_poly(geom['paths'])
+			self.make_line(geom['paths'])
 		else:
 			self.make_point((float(geom['x']),float(geom['y']) ))
 

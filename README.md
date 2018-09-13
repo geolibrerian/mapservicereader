@@ -32,6 +32,5 @@ PySHP (version is included with code as shapefile.py)
 
 Known Issues:
 
-Having trouble with some data fields when run using Python 2
+Having trouble with some data fields when run using Python 2 (seems to be re-organizing fields)
 
-Having trouble with Polyline geometry
