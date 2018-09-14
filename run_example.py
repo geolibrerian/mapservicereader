@@ -3,7 +3,7 @@ from functions.classes import GetData, ProcessData
 from functions.types import esri_geometry,shape_types
 
 url ='http://www2.lynxgis.com/arcgis/rest/services/LosGatos/TLGBuildings/MapServer/0/query'
-
+output = 'Buildings'
 params1 = {'where':'1=1', 'f':'pjson', "returnGeometry":"false","outFields":'*','returnIdsOnly':'true'  }
 params2 = {'f':'pjson', 'where':'','outSR':'4326',"outFields":'*'}
 

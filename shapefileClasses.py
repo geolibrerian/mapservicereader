@@ -2,9 +2,6 @@ import shapefile
 
 
 
-
-
-
 class ShapeGenerate():
 	
 	def create(self, shapetype=1):
